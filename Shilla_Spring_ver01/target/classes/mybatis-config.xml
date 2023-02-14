@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+                         "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<typeAliases>
+		<typeAlias alias="aboutUsBenefitsVO" type="com.shilla.aboutUs.benefits.vo.AboutUsBenefitsVO"/>
+		<typeAlias alias="aboutUsVO" type="com.shilla.aboutUs.vo.AboutUsVO"/>
+		<typeAlias alias="bookingVO" type="com.shilla.booking.vo.BookingVO"/>
+		<typeAlias alias="roomInfoVO" type="com.shilla.booking.vo.RoomInfoVO"/>
+		<typeAlias alias="eventCommentVO" type="com.shilla.event.comment.vo.EventCommentVO"/>
+		<typeAlias alias="eventVO" type="com.shilla.event.vo.EventVO"/>
+		<typeAlias alias="userVO" type="com.shilla.user.vo.UserVO"/>
+	</typeAliases>
+</configuration>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shilla.event.comment.dao.EventCommentDAO">
+
+	<select id="getEventComment" resultType="eventCommentVO">
+		SELECT * FROM tbl_event_comment WHERE event_id=${event_id} ORDER BY comment_cdepth, comment_write_date
+	</select>
+	
+	<insert id="insertComment">
+		Insert into tbl_event_comment (comment_id,event_id,comment_writer_img,comment_writer_name,comment_write_date,comment_context,comment_cdepth) 
+		values (Comment_id_sequence.NEXTVAL,${event_id},'${comment_writer_img}','${comment_writer_name}',DEFAULT,'${comment_context}',DEFAULT)
+	</insert>
+	
+	<insert id="insertCommentComment">
+		Insert into tbl_event_comment (comment_id,event_id,comment_writer_img,comment_writer_name,comment_write_date,comment_context,comment_cdepth,comment_cparent) 
+		values (Comment_id_sequence.NEXTVAL,${event_id},'${comment_writer_img}','${comment_writer_name}',DEFAULT,'${comment_context}',1,${comment_cparent})		
+	</insert>
+	
+	<delete id="deleteCommentParent">
+		delete from tbl_event_comment where comment_id=${comment_id} or comment_cparent=${comment_id}
+	</delete>
+	
+	<delete id="deleteComment">
+		delete from tbl_event_comment where comment_id=${comment_id}
+	</delete>
+	
+	<delete id="deleteAllEventComment">
+		delete from tbl_event_comment where event_id=${event_id}
+	</delete>
+	
+</mapper>

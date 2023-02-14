@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.shilla.user.dao.UserDAO">
+
+	<select id="login" resultType="userVO">
+		SELECT userPassword
+		FROM
+		tbl_userinfo
+		WHERE userID=#{userID} and userPassword=#{userPassword}
+	</select>
+
+
+	<select id="registerCheck" resultType="userVO">
+		SELECT * FROM tbl_userinfo
+		WHERE userID =#{userID}
+	</select>
+
+	<insert id="userinfo">
+		INSERT INTO tbl_userinfo VALUES(#{userID},
+		#{userPassword}, #{userName}, #{userTel}, #{userAge},
+		#{userGender},#{userEmail})
+	</insert>
+
+	<select id="getUser" resultType="userVO">
+		SELECT * FROM tbl_userinfo WHERE
+		userID =#{userID}
+	</select>
+
+	<update id="updateUser">
+		UPDATE tbl_userinfo SET userPassword=#{userPassword},userName=#{userName},
+		userGender=#{userGender},userAge=#{userAge},userTel=#{userTel},userEmail=#{userEmail}
+		WHERE userID=#{userID}
+	</update>
+
+	<delete id="deleteUser">
+		DELETE FROM tbl_userinfo WHERE userID =#{userID}
+	</delete>
+	
+	<select id="realGetUser" resultType="userVO">
+		SELECT * FROM tbl_userinfo WHERE
+		userID =#{userID}
+	</select>
+</mapper>

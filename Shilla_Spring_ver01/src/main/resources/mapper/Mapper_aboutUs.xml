@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.shilla.aboutUs.dao.AboutUsDAO">
+
+	<select id="getAboutUs" resultType="aboutUsVO">
+		SELECT *
+		FROM tbl_aboutUs
+	</select>
+
+	<update id="Update">
+		UPDATE tbl_aboutUs SET
+		welcome_title=#{welcome_title},
+		welcome_context=#{welcome_context},
+		img_one=#{img_one},
+		img_one_title=#{img_one_title},
+		img_two=#{img_two},
+		img_two_title=#{img_two_title},
+		img_three=#{img_three},
+		img_three_title=#{img_three_title},
+		video_title=#{video_title},
+		video_context=#{video_context},
+		video_href_address=#{video_href_address},
+		img_four=#{img_four},
+		img_four_title=#{img_four_title},
+		img_five=#{img_five},
+		img_five_title=#{img_five_title},
+		img_six=#{img_six},
+		img_six_title=#{img_six_title},
+		img_seven=#{img_seven},
+		img_seven_title=#{img_seven_title}
+		<!-- mapper 기능 DB 확인 완료 -->
+	</update>
+
+</mapper>

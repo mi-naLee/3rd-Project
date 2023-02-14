@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shilla.booking.dao.BookingDAO">
+	<insert id="insert">		
+		<![CDATA[
+ 			insert into tbl_booking values(#{param1},#{param2},#{param3},#{param4},to_date(#{param5}),to_date(#{param6}),#{param7},#{param8},#{param9})	 -->
+ 		]]>
+	</insert>
+		
+	<select id="getBookingMem" resultType="bookingVO">		
+		<![CDATA[
+			SELECT * FROM tbl_booking where userID=#{param1} ORDER BY checkIn		
+ 		]]>
+	</select>
+	
+	<select id="getBookingNonmem" resultType="bookingVO">		
+		<![CDATA[
+			SELECT * FROM tbl_booking where userName=#{param1} and userTel=#{param2} and userID='비회원'  ORDER BY checkIn		
+ 		]]>
+	</select>
+	
+	<select id="getAllBooking" resultType="bookingVO">		
+		<![CDATA[
+			SELECT * FROM tbl_booking ORDER BY checkIn		
+ 		]]>
+	</select>
+</mapper>

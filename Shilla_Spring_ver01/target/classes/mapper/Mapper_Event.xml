@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shilla.event.dao.EventDAO">
+
+	<select id="getAllEvent" resultType="eventVO">
+	<![CDATA[
+		select
+			event_id, kategorieOnEvnet, title_name, write_date, img_out
+		from
+			(
+				select /*+INDEX_DESC(tbl_event event_id_pk) */
+					rownum rn, event_id, kategorieOnEvnet, title_name, write_date, img_out
+				from
+					tbl_event
+				where rownum <= ${pageNum} * ${amount}
+			)
+		where rn > (${pageNum} -1 ) * ${amount}
+	]]>
+	</select>
+	
+	<select id="getTotalCount" resultType="int">
+		select count(*) from tbl_event where event_id > 0
+	</select>
+
+	<select id="getEvent" resultType="eventVO">
+		select * from tbl_event where event_id=${event_id} and title_name='${title_name}'
+	</select>
+	
+	<insert id="EventInsert">
+		INSERT INTO tbl_event VALUES (
+		event_id_sequence.NEXTVAL,
+		'${kategorieOnEvnet}',
+		'${title_name}',
+		to_date('${write_date}'),
+		'${writerOnEvnet}',
+		'${prologOnevnet}',
+		'${img_title}',
+		'${img_out}',
+		'${imgOne}',
+		'${imgTwo}',
+		'${imgThree}',
+		'${subTitleOnEvnet}',
+		'${textOnsubTitle}')
+	</insert>
+	
+	<delete id="EventDelete">
+		delete from tbl_event where event_id=${event_id} and title_name='${title_name}'
+	</delete>
+	
+	<select id="getEventForUpdate" resultType="eventVO">
+		select * from tbl_event where event_id=${event_id} and title_name='${title_name}'
+	</select>
+	
+	<update id="EventUpdate">
+		UPDATE tbl_event SET
+				kategorieOnEvnet='${kategorieOnEvnet}',
+				title_name='${title_name}',
+				write_date=to_date('${write_date}'),
+				writerOnEvnet='${writerOnEvnet}',
+				prologOnevnet='${prologOnevnet}',
+				img_title='${img_title}',
+				img_out='${img_out}',
+				imgOne='${imgOne}',
+				imgTwo='${imgTwo}',
+				imgThree='${imgThree}',
+				subTitleOnEvnet='${subTitleOnEvnet}',
+				textOnsubTitle='${textOnsubTitle}'
+				where event_id=${event_id}
+	</update>
+	
+</mapper>

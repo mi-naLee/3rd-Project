@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- ********************* test mapper.xml 입니다 ********************** -->
+
+<!-- 맵핑될 DAO 인터페이스의 Full name  -->
+<mapper namespace="com.empmanage.sawon.service.dao.SawonDAO">
+  
+	<select id="getAllSawon" resultType="sawonVO"> 
+	SELECT id
+	     , name
+	     , tel
+	  FROM teltable55
+	</select>
+	
+	<!-- void insertSawon(SawonVO sawonVO); 의 메소드명과 id이름이 일치 -->
+	<insert id="insertSawon">
+	INSERT INTO teltable55
+	VALUES (#{id}, #{name},#{tel})
+	</insert>
+<!-- ? ? ?  --><!-- iBatis :#name# -->
+
+	<select id="getTelinfo" resultType="sawonVO">
+		SELECT id, name, tel FROM teltable55 WHERE name=#{name}
+		<!-- sawonAll.jsp : 이름 클릭 => controller => service => dao => 현재 위치 -->
+	</select>
+	
+	<update id="updateTelinfo">
+		update TelTable55 set id=#{id}, tel=#{tel} where name=#{name}
+	</update>
+	
+	<delete id="deleteTelinfo">
+		delete from TelTable55 where name=#{name}
+	</delete>
+</mapper>
