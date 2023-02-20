@@ -43,17 +43,17 @@ var lang = {
                 duplicate_check: "중복확인",
                 
                 // ** index.jsp **
-                about_us_stay: "'신라스테이'는 합리적인 가격에 신라 호텔의 가치를 경험할 수 있는 비즈니스 호텔로 "+
-                	"신라호텔의 상품과 서비스 가치 위에 새로운 감성을 더한 공간입니다."+
-                	" 신라스테이는 고객의 니즈를 먼저 이해하며, 고객에게 진정으로 의미 있는 상품과 서비스를 제공합니다.",
+                about_us_stay: "'실라스테이'는 합리적인 가격에 실라 호텔의 가치를 경험할 수 있는 비즈니스 호텔로 "+
+                	"실라호텔의 상품과 서비스 가치 위에 새로운 감성을 더한 공간입니다."+
+                	" 실라스테이는 고객의 니즈를 먼저 이해하며, 고객에게 진정으로 의미 있는 상품과 서비스를 제공합니다.",
                 home_text_before: "여행을 시작하는 이에게는 설렘을",
-                home_text_after: "지친 이에게는 편안한 휴식을 제공하는 신라스테이 강서",
+                home_text_after: "지친 이에게는 편안한 휴식을 제공하는 실라스테이 강서",
                 terms_and_conditions: "이용약관",
                 privacy_policy: "개인정보 처리방침",
-                home_footer_text: "'호텔 신라'는 한국을 대표하는 서비스 기업으로서 고객만족에 최선을 다하고 있습니다.",
+                home_footer_text: "'호텔 실라'는 한국을 대표하는 서비스 기업으로서 고객만족에 최선을 다하고 있습니다.",
                 facilities: "부대시설",
                 location_title: "호텔위치",
-                location_content: "서울특별시 강서구 마곡서로 9 호텔 신라스테이 강서",
+                location_content: "서울특별시 강서구 마곡서로 9 호텔 실라스테이 강서",
                 
                 // ** 호텔소개 페이지 **
                 save_btn: "저장하기",
@@ -132,8 +132,8 @@ var lang = {
             }
         }
 
-        // 언어별 렌더링
-        function render(locale) {
+        // 한글 처리
+        function setUp(locale) {
             const $lang = document.querySelectorAll("[data-lang]")
             $lang.forEach(el => {
                 const code = el.dataset.lang
@@ -145,6 +145,6 @@ var lang = {
         var korean = document.getElementById("ko");
         
         if(korean != null){
-        	render("ko");
+        	setUp("ko");
         }  
         

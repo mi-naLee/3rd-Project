@@ -136,8 +136,8 @@ var lang = {
             }
         }
 
-        // 언어별 렌더링
-        function render(locale) {
+        // 영어 처리
+        function setUp(locale) {
             const $lang = document.querySelectorAll("[data-lang]")
             $lang.forEach(el => {
                 const code = el.dataset.lang
@@ -158,7 +158,7 @@ var lang = {
         var payBtn_noMem = document.getElementById("payBtn_noMem");
         
 		if(english != null){
-        	render("en");
+        	setUp("en");
         	if(sendBtn != null){ // sendBtn이 있는 문의하기 페이지의 버튼 글 바꾸기
         		document.getElementById("sendBtn").setAttribute("value","Submit");
        		}
